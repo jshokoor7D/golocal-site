@@ -165,12 +165,13 @@
   .aud li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:3px;background:var(--amber)}
   /* founder */
   .founder{background:var(--white)}
-  .founder-card{max-width:860px;margin:0 auto;background:var(--navy);color:var(--warm-white);border-radius:28px;padding:54px;position:relative;overflow:hidden}
-  .founder-card::before{content:"";position:absolute;bottom:-120px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(253,166,43,.22),transparent 66%)}
-  .founder-card .eyebrow{color:var(--amber);display:block;margin-bottom:16px;position:relative}
-  .founder-card h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:18px;position:relative}
-  .founder-card p{font-size:1.08rem;color:rgba(247,244,239,.86);margin-bottom:15px;position:relative}
-  .founder-card p.lead{font-size:clamp(1.15rem,1.8vw,1.35rem);font-weight:600;color:var(--warm-white);margin-bottom:20px}
+  .founder-card{max-width:860px;margin:0 auto;background:var(--white);color:var(--ink);border:1px solid var(--line-cool);border-radius:28px;padding:54px;position:relative;overflow:hidden;box-shadow:var(--shadow-md)}
+  .founder-card::before{content:"";position:absolute;bottom:-120px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(253,166,43,.12),transparent 66%)}
+  .founder-card .eyebrow{color:var(--coral);display:block;margin-bottom:16px;position:relative}
+  .founder-card h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:18px;position:relative;color:var(--navy)}
+  .founder-card h2 .hl{color:var(--amber-warm)}
+  .founder-card p.lead{font-size:clamp(1.15rem,1.8vw,1.35rem);font-weight:600;color:var(--navy);margin-bottom:20px;position:relative}
+  .founder-card p{font-size:1.08rem;color:var(--muted);margin-bottom:15px;position:relative}
   /* faq */
   .faq{background:var(--warm-white)}
   .faq-list{max-width:780px;margin:0 auto}
@@ -184,7 +185,7 @@
   .faq details[open] summary .pm::after{transform:rotate(90deg)}
   .faq .ans{padding:0 24px 22px;color:var(--muted);font-size:1rem}
   /* final */
-  .final{background:var(--tint-amber);text-align:center}
+  .final{background:var(--white);text-align:center}
   .final h2{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:16px}
   .final p{font-size:1.15rem;color:var(--muted);max-width:540px;margin:0 auto 32px}
   footer{background:var(--navy-deep);color:rgba(247,244,239,.72);padding:54px 0 38px}
@@ -311,7 +312,7 @@
 </section>
 <section class="founder">
   <div class="wrap">
-    <div class="founder-card grain reveal"><span class="corner"></span>
+    <div class="founder-card reveal"><span class="corner"></span>
       <span class="eyebrow">Why GoLocal</span>
       <h2>All your boards in <span class="hl">one workspace.</span></h2>
       <p class="lead">Designed for governments to get more from their boards, and for the people who serve to get more from their time.</p>
