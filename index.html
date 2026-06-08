@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GoLocal — Software for local government boards and commissions</title>
+<meta name="description" content="GoLocal is the workspace local governments use to run their boards and commissions. Onboarding, meetings, documents, and communication in one place, built for the people who actually serve." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:#034872; --navy-deep:#022f49; --amber:#FDA62B; --amber-warm:#FFB020; --coral:#F9795E;
+    --warm-white:#f7f4ef; --white:#fff; --ink:#16242e; --muted:#5d6c78;
+    --line:#e7e2d9; --line-cool:#e3eaf0;
+    --tint-amber:#fff6e8; --tint-navy:#eef4f8; --tint-coral:#fdeee9; --tint-mint:#edf5f2;
+    --radius:22px; --radius-sm:14px;
+    --shadow-sm:0 2px 10px rgba(3,72,114,.06); --shadow-md:0 14px 40px rgba(3,72,114,.10); --shadow-lg:0 30px 70px rgba(3,72,114,.16);
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"DM Sans",system-ui,sans-serif;background:var(--warm-white);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{letter-spacing:-.022em;line-height:1.08;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif-accent{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:500}
+  nav{position:sticky;top:0;z-index:60;background:rgba(247,244,239,.82);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid rgba(231,226,217,.7)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center}
+  .brand-logo{height:30px;width:auto;display:block}
+  .foot-logo{height:30px;width:auto;display:block}
+  .mark{width:28px;height:28px;display:block}
+  .nav-right{display:flex;align-items:center;gap:22px}
+  .nav-link{font-weight:500;font-size:.96rem;color:var(--muted);transition:color .18s}
+  .nav-link:hover{color:var(--navy)}
+  .nav-cta{background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;font-size:.94rem;transition:background .2s,transform .2s,box-shadow .2s}
+  .nav-cta:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .hero{position:relative;padding:80px 0 76px;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-240px;right:-160px;width:720px;height:720px;background:radial-gradient(circle at center,rgba(253,166,43,.20),rgba(249,121,94,.10) 42%,transparent 68%);pointer-events:none;z-index:0}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--line-cool);padding:7px 14px 7px 10px;border-radius:999px;font-size:.84rem;font-weight:600;color:var(--navy);box-shadow:var(--shadow-sm);margin-bottom:24px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--coral)}
+  .hero h1{font-size:clamp(2.5rem,5vw,3.95rem);color:var(--navy);margin-bottom:22px}
+  .hero h1 .serif-accent{color:var(--coral)}
+  .hero p.sub{font-size:clamp(1.08rem,1.6vw,1.24rem);color:var(--muted);max-width:540px;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-primary{background:var(--amber);color:var(--navy-deep);padding:14px 28px;border-radius:999px;font-weight:700;font-size:1rem;box-shadow:0 10px 26px rgba(253,166,43,.34);transition:transform .2s,box-shadow .2s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(253,166,43,.46)}
+  .btn-ghost{color:var(--navy);font-weight:600;padding:14px 22px;border-radius:999px;border:1px solid var(--line-cool);background:var(--white);transition:border-color .2s,transform .2s}
+  .btn-ghost:hover{border-color:var(--navy);transform:translateY(-1px)}
+  .hero-micro{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap;font-size:.86rem;color:var(--muted);font-weight:500}
+  .hero-micro span{display:flex;align-items:center;gap:7px}
+  .hero-micro svg{width:15px;height:15px;stroke:var(--coral)}
+  .mock-stage{position:relative}
+  .mock{background:var(--white);border:1px solid var(--line-cool);border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden;transform:rotate(.4deg)}
+  .mock-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line-cool);background:#fbfcfd}
+  .mock-bar .d{width:10px;height:10px;border-radius:50%;background:#e2e8ee}
+  .mock-bar .title{margin-left:10px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  .mock-body{padding:20px;display:grid;gap:14px}
+  .mock-head{display:flex;align-items:center;justify-content:space-between}
+  .mock-head .bname{font-weight:700;color:var(--navy);font-size:1.02rem}
+  .mock-head .seal{font-size:.7rem;font-weight:700;color:var(--amber-warm);background:var(--tint-amber);padding:4px 9px;border-radius:999px}
+  .avatars{display:flex}
+  .avatars span{width:26px;height:26px;border-radius:50%;border:2px solid #fff;margin-left:-7px;font-size:.62rem;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center}
+  .card-mini{border:1px solid var(--line-cool);border-radius:var(--radius-sm);padding:14px}
+  .card-mini .label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+  .progress-row .v{font-size:.82rem;font-weight:600;color:var(--navy)}
+  .progress-row .c{font-size:.78rem;color:var(--coral);font-weight:600}
+  .bar{height:8px;border-radius:999px;background:#eef2f6;overflow:hidden}
+  .bar i{display:block;height:100%;width:67%;border-radius:999px;background:linear-gradient(90deg,var(--amber),var(--amber-warm))}
+  .doc-row{display:flex;align-items:center;gap:9px;font-size:.84rem;color:var(--ink);padding:7px 0}
+  .doc-row .chip{width:22px;height:22px;border-radius:6px;background:var(--tint-navy);display:flex;align-items:center;justify-content:center}
+  .doc-row .chip svg{width:13px;height:13px;stroke:var(--navy)}
+  .meet{display:flex;align-items:center;gap:12px}
+  .meet .date{text-align:center;background:var(--tint-coral);border-radius:10px;padding:7px 11px}
+  .meet .date .m{font-size:.62rem;font-weight:700;color:var(--coral);text-transform:uppercase}
+  .meet .date .day{font-size:1.1rem;font-weight:700;color:var(--navy);line-height:1}
+  .meet .mt{font-size:.86rem;font-weight:600;color:var(--navy)}
+  .meet .ms{font-size:.76rem;color:var(--muted)}
+  .float-badge{position:absolute;bottom:-18px;left:-22px;background:#fff;border:1px solid var(--line-cool);border-radius:14px;box-shadow:var(--shadow-md);padding:12px 15px;display:flex;align-items:center;gap:10px;transform:rotate(-1.5deg)}
+  .float-badge .tick{width:30px;height:30px;border-radius:9px;background:var(--tint-mint);display:flex;align-items:center;justify-content:center}
+  .float-badge .tick svg{width:17px;height:17px;stroke:#1f9d6b}
+  .float-badge .ft{font-size:.78rem;font-weight:700;color:var(--navy)}
+  .float-badge .fs{font-size:.7rem;color:var(--muted)}
+  .credband{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
+  .credband .wrap{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;flex-wrap:wrap;font-size:1rem;color:var(--muted)}
+  .credband strong{color:var(--navy);font-weight:600}
+  section{padding:92px 0}
+  .eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+  .sec-head{max-width:680px;margin:0 auto 56px;text-align:center}
+  .sec-head .eyebrow{color:var(--coral);display:block;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(1.95rem,3.4vw,2.7rem);color:var(--navy);margin-bottom:14px}
+  .sec-head p{font-size:1.1rem;color:var(--muted)}
+  /* numbered problem rows */
+  .prow{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:78px}
+  .prow:last-child{margin-bottom:0}
+  .prow.flip .ptext{order:2}
+  .pnum{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;margin-bottom:18px}
+  .ptext h3{font-size:clamp(1.45rem,2.6vw,2rem);color:var(--navy);margin-bottom:14px}
+  .ptext .fix{font-size:1.06rem;color:var(--muted)}
+  .ptext .fix b{color:var(--ink);font-weight:600}
+  .fvisual{border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-md);border:1px solid var(--line-cool);background:var(--white);position:relative}
+  .fv-onboard{position:relative;padding-left:14px}
+  .fv-onboard .step{position:relative;display:flex;align-items:flex-start;gap:14px;padding-bottom:18px}
+  .fv-onboard .step:last-child{padding-bottom:0}
+  /* the chain: vertical connector behind the nodes */
+  .fv-onboard .step::before{content:"";position:absolute;left:10px;top:23px;bottom:-1px;width:2px;background:var(--line-cool)}
+  .fv-onboard .step:last-child::before{display:none}
+  .fv-onboard .step.done::before{background:var(--navy)}
+  .fv-onboard .n{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;margin-top:1px}
+  .fv-onboard .n svg{width:11px;height:11px;stroke:#fff;stroke-width:3.2;fill:none}
+  .fv-onboard .n.done{background:var(--navy);color:#fff}
+  .fv-onboard .n.now{background:var(--amber);color:var(--navy-deep);box-shadow:0 0 0 3px rgba(253,166,43,.18)}
+  .fv-onboard .n.next{background:#eef2f6;color:var(--muted)}
+  .fv-onboard .t{font-size:.92rem;font-weight:600;color:var(--ink);line-height:1.35}
+  .fv-onboard .t small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+  .fv-msg .ann{background:var(--tint-navy);border-radius:14px;padding:13px 15px;margin-bottom:12px}
+  .fv-msg .ann .who{font-size:.76rem;font-weight:700;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:7px}
+  .fv-msg .ann .who .tag{font-size:.62rem;background:var(--navy);color:#fff;padding:2px 7px;border-radius:999px}
+  .fv-msg .ann .txt{font-size:.86rem;color:var(--ink)}
+  .fv-msg .reply{background:#fff;border:1px solid var(--line-cool);border-radius:14px;padding:11px 14px;margin-left:26px}
+  .fv-msg .reply .who{font-size:.74rem;font-weight:700;color:var(--muted);margin-bottom:3px}
+  .fv-msg .reply .txt{font-size:.84rem;color:var(--ink)}
+  .fv-msg .lock{margin-top:13px;display:flex;align-items:center;gap:8px;font-size:.78rem;color:#1f9d6b;font-weight:600}
+  .fv-msg .lock svg{width:15px;height:15px;stroke:#1f9d6b}
+  /* how it works */
+  .how{background:var(--navy);color:var(--warm-white)}
+  .how .sec-head .eyebrow{color:var(--amber)}
+  .how .sec-head h2{color:var(--warm-white)}
+  .how .sec-head p{color:rgba(247,244,239,.82)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .stepcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px}
+  .stepcard .sn{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;color:var(--amber-warm);margin-bottom:14px}
+  .stepcard h3{font-size:1.2rem;color:var(--warm-white);margin-bottom:10px}
+  .stepcard p{font-size:.97rem;color:rgba(247,244,239,.78)}
+  /* beyond (secondary) */
+  .beyond{background:var(--white)}
+  .by-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .by{background:var(--warm-white);border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px;display:flex;gap:18px;align-items:flex-start}
+  .by .ic{width:46px;height:46px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center}
+  .by .ic svg{width:23px;height:23px}
+  .by h3{font-size:1.18rem;color:var(--navy);margin-bottom:8px}
+  .by p{font-size:.98rem;color:var(--muted)}
+  /* audiences */
+  .auds{background:var(--tint-navy)}
+  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .aud{background:var(--white);border-radius:var(--radius);padding:30px 28px;box-shadow:var(--shadow-sm)}
+  .aud .tag{font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;display:inline-block}
+  .aud:nth-child(1) .tag{color:var(--coral)} .aud:nth-child(2) .tag{color:var(--amber-warm)} .aud:nth-child(3) .tag{color:var(--navy)}
+  .aud ul{list-style:none}
+  .aud li{position:relative;padding-left:24px;margin-bottom:12px;color:var(--ink);font-size:.98rem}
+  .aud li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:3px;background:var(--amber)}
+  /* founder */
+  .founder{background:var(--white)}
+  .founder-card{max-width:860px;margin:0 auto;background:var(--navy);color:var(--warm-white);border-radius:28px;padding:54px;position:relative;overflow:hidden}
+  .founder-card::before{content:"";position:absolute;bottom:-120px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(253,166,43,.22),transparent 66%)}
+  .founder-card .eyebrow{color:var(--amber);display:block;margin-bottom:16px;position:relative}
+  .founder-card h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:18px;position:relative}
+  .founder-card p{font-size:1.08rem;color:rgba(247,244,239,.86);margin-bottom:15px;position:relative}
+  /* faq */
+  .faq{background:var(--warm-white)}
+  .faq-list{max-width:780px;margin:0 auto}
+  .faq details{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:14px;overflow:hidden}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 24px;font-weight:600;font-size:1.06rem;color:var(--navy);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .pm{flex:none;width:22px;height:22px;position:relative;transition:transform .2s}
+  .faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;background:var(--coral);border-radius:2px}
+  .faq summary .pm::before{top:10px;left:3px;width:16px;height:2px}
+  .faq summary .pm::after{top:3px;left:10px;width:2px;height:16px;transition:transform .2s}
+  .faq details[open] summary .pm::after{transform:rotate(90deg)}
+  .faq .ans{padding:0 24px 22px;color:var(--muted);font-size:1rem}
+  /* final */
+  .final{background:var(--tint-amber);text-align:center}
+  .final h2{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:16px}
+  .final p{font-size:1.15rem;color:var(--muted);max-width:540px;margin:0 auto 32px}
+  footer{background:var(--navy-deep);color:rgba(247,244,239,.72);padding:54px 0 38px}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:34px}
+  .foot-brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.3rem;color:var(--warm-white)}
+  .foot-note{max-width:360px;font-size:.92rem;line-height:1.6}
+  .foot-contact a{color:var(--amber-warm);font-weight:600}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:.85rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+  /* brand: two-tone headline highlight */
+  .hl{color:var(--amber-warm)} .hl-coral{color:var(--coral)}
+  /* brand: subtle grain on navy surfaces */
+  .grain{position:relative}
+  .grain::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:4px 4px;pointer-events:none;border-radius:inherit}
+  .grain>*{position:relative;z-index:1}
+  /* brand: amber check-mark bullets */
+  .aud li::before{content:"";left:1px;top:5px;width:11px;height:6px;border:none;border-left:2.5px solid var(--amber-warm);border-bottom:2.5px solid var(--amber-warm);transform:rotate(-45deg);background:none;border-radius:0}
+  /* founder corner accent (CIVIC-guide tab motif) */
+  .founder-card .corner{position:absolute;top:0;left:54px;width:62px;height:6px;background:linear-gradient(90deg,var(--amber),var(--coral));border-radius:0 0 7px 7px;z-index:1}
+  @media (max-width:940px){
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .mock-stage{max-width:460px}
+    .prow,.prow.flip .ptext{grid-template-columns:1fr;order:0}
+    .prow{gap:26px}
+    .steps{grid-template-columns:1fr}
+    .by-grid{grid-template-columns:1fr}
+    .aud-grid{grid-template-columns:1fr}
+    section{padding:64px 0}
+    .founder-card{padding:34px 26px}
+    .nav-link{display:none}
+  }
+</style>
+</head>
+<body id="top">
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><img class="brand-logo" src="public/logo-dark.png" alt="GoLocal" /></a>
+    <div class="nav-right"><a class="nav-link" href="#how">How it works</a><a class="nav-link" href="#who">Who it serves</a><a class="nav-link" href="#faq">FAQ</a><a class="nav-cta" href="#contact">Get in touch</a></div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span> Built for local government boards and commissions</span>
+      <h1><span class="hl-coral">One place</span> to run your boards and commissions.</h1>
+      <p class="sub">Onboarding, meetings, documents, and communication in one place, built around the people who serve evenings and weekends, not the software that usually ignores them.</p>
+      <div class="hero-actions"><a class="btn-primary" href="#contact">Request a conversation</a><a class="btn-ghost" href="#how">See how it works</a></div>
+      <div class="hero-micro">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Built for the people who serve</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Grounded in field research</span>
+      </div>
+    </div>
+    <div class="mock-stage">
+      <div class="mock">
+        <div class="mock-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="title">Housing Commission workspace</span></div>
+        <div class="mock-body">
+          <div class="mock-head"><span class="bname">Housing Commission</span><span class="seal">County</span></div>
+          <div class="avatars"><span style="background:#034872">TM</span><span style="background:#F9795E">RB</span><span style="background:#FDA62B">JL</span><span style="background:#1f9d6b">AO</span><span style="background:#7a6cc4">+3</span></div>
+          <div class="card-mini"><div class="label">Onboarding</div><div class="progress-row"><span class="v">New member setup</span><span class="c">4 of 6</span></div><div class="bar"><i></i></div></div>
+          <div class="card-mini"><div class="label">Next meeting</div>
+            <div class="meet"><div class="date"><div class="m">Jun</div><div class="day">18</div></div><div><div class="mt">Regular Session</div><div class="ms">2 documents attached</div></div></div>
+            <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Agenda - June 18.pdf</div>
+            <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Staff memo - rezoning.pdf</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-badge"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><div class="ft">8 of 9 opened</div><div class="fs">Announcement read</div></div></div>
+    </div>
+  </div>
+</header>
+<div class="credband"><div class="wrap"><span>Grounded in <strong>field research with clerks, commissioners, and city staff</strong>, and built on working functionality, not promises.</span></div></div>
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Why boards struggle</span><h2>The same problems, in every jurisdiction. <span class="hl-coral">GoLocal fixes them.</span></h2></div>
+    <div class="prow reveal">
+      <div class="ptext"><div class="pnum">1</div><h3>New members take months to find their footing.</h3><p class="fix">Onboarding happens through scattered email attachments and figuring it out over time. <b>GoLocal lets staff build a structured onboarding once and reuse it for every new member,</b> with progress tracked automatically, so people arrive prepared.</p></div>
+      <div class="fvisual fv-onboard">
+        <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Welcome and oath of office<small>Completed</small></span></div>
+        <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Bylaws and code of conduct<small>Acknowledged</small></span></div>
+        <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Open meetings law<small>Watched</small></span></div>
+        <div class="step now"><span class="n now">4</span><span class="t">Roles and procedures quiz<small>In progress</small></span></div>
+        <div class="step next"><span class="n next">5</span><span class="t">Meet your board<small>Up next</small></span></div>
+      </div>
+    </div>
+    <div class="prow flip reveal">
+      <div class="ptext"><div class="pnum">2</div><h3>Materials live in email threads and paper packets.</h3><p class="fix">Documents scatter across inboxes, drives, and printed binders. <b>GoLocal puts agendas, materials, and attendance in one place,</b> distributed once instead of emailed member by member, with staff able to see who has the documents and who is coming.</p></div>
+      <div class="fvisual">
+        <div class="mock-head" style="margin-bottom:16px"><span class="bname">Regular Session</span><span class="seal" style="background:var(--tint-coral);color:var(--coral)">June 18, 7:00 PM</span></div>
+        <div class="card-mini" style="margin-bottom:12px"><div class="label">Meeting packet</div>
+          <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Agenda - June 18.pdf</div>
+          <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Staff memo - rezoning.pdf</div>
+        </div>
+        <div class="card-mini"><div class="label">Attendance</div><div class="progress-row"><span class="v">Confirmed for this meeting</span><span class="c" style="color:#1f9d6b">7 of 9</span></div><div class="bar"><i style="width:78%;background:linear-gradient(90deg,#1f9d6b,#34c98a)"></i></div></div>
+      </div>
+    </div>
+    <div class="prow reveal">
+      <div class="ptext"><div class="pnum">3</div><h3>Group email quietly risks an open meetings violation.</h3><p class="fix">Reply-all chains that start as logistics can become informal deliberation, the kind that worries government attorneys. <b>GoLocal's structure makes accidental quorum hard to commit,</b> announcements reach everyone, replies stay private, and the record stays clean.</p></div>
+      <div class="fvisual fv-msg">
+        <div class="ann"><div class="who"><span class="tag">Liaison</span> Maria Reyes</div><div class="txt">Reminder, the rezoning memo is now in your June packet. Please review before Tuesday.</div></div>
+        <div class="reply"><div class="who">James Carter (private reply)</div><div class="txt">Got it, thank you. One question on the parking section.</div></div>
+        <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No accidental quorum. No reply-all deliberation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="how grain" style="background:var(--navy)">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">How getting started works</span><h2>Set up once. <span class="hl">Then it runs in the background.</span></h2><p>The work of standing it up is ours, not yours. The habit change is small and asked of one person, the staff liaison.</p></div>
+    <div class="steps">
+      <div class="stepcard reveal"><div class="sn">Step 1</div><h3>We set it up for you</h3><p>We bring your board, your roster, and your existing documents in. You do not start from an empty shelf or re-enter anything.</p></div>
+      <div class="stepcard reveal"><div class="sn">Step 2</div><h3>You invite your members</h3><p>Members get an email, click a link, and they are in. No new inbox to manage, no system for them to learn.</p></div>
+      <div class="stepcard reveal"><div class="sn">Step 3</div><h3>Members onboard themselves</h3><p>They work through the onboarding you built once, and from then on everything for the board lives in one place.</p></div>
+    </div>
+  </div>
+</section>
+<section class="beyond">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow" style="color:var(--amber-warm)">Beyond the basics</span><h2>Two more things <span class="hl-coral">governments</span> feel.</h2></div>
+    <div class="by-grid">
+      <div class="by reveal"><div class="ic" style="background:var(--tint-coral)"><svg viewBox="0 0 24 24" fill="none" stroke="#F9795E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><h3>Knowledge that survives turnover</h3><p>When a term ends, what a commissioner learned stays in the board's workspace instead of a drive that disappears with personnel.</p></div></div>
+      <div class="by reveal"><div class="ic" style="background:var(--tint-amber)"><svg viewBox="0 0 24 24" fill="none" stroke="#FDA62B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><div><h3>Built for life on the go</h3><p>Commissioners are working professionals serving evenings and weekends. GoLocal is mobile first because civic service happens between everything else.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="auds" id="who">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow" style="color:var(--coral)">Who it serves</span><h2>One platform, <span class="hl-coral">three people</span> who benefit.</h2></div>
+    <div class="aud-grid">
+      <div class="aud reveal"><span class="tag">Commissioners</span><ul><li>Everything for your board in one searchable place</li><li>Walk in prepared from day one</li><li>No more digging through email for the agenda</li><li>Your work archived across your full term</li></ul></div>
+      <div class="aud reveal"><span class="tag">Clerks and liaisons</span><ul><li>Distribute packets once, not member by member</li><li>See who has read, responded, and will attend</li><li>Onboarding that builds once and reuses forever</li><li>An end to the cycle of repeat questions</li></ul></div>
+      <div class="aud reveal"><span class="tag">Government leadership</span><ul><li>Demonstrate boards operate professionally</li><li>Reduce FOIA and open meetings risk</li><li>Standardize without forcing rigid uniformity</li><li>Real visibility into how boards are doing</li></ul></div>
+    </div>
+  </div>
+</section>
+<section class="founder">
+  <div class="wrap">
+    <div class="founder-card grain reveal"><span class="corner"></span>
+      <span class="eyebrow">Why we built it</span>
+      <h2>Built from <span class="hl">inside the work</span>, not from a distance.</h2>
+      <p>GoLocal was not designed by watching local government from the outside. It was founded out of firsthand service on a local commission and built on field research with the clerks, commissioners, and city staff who do this work, the actual experience of onboarding members, chasing documents, and trying to run a board well with the tools that exist today.</p>
+      <p>That is also why the platform is careful about what it claims. Government buyers are sophisticated and skeptical, and they should be. Everything here describes current, working functionality, reviewed for security before it ever touches your records.</p>
+    </div>
+  </div>
+</section>
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Common questions</span><h2>What <span class="hl-coral">governments</span> ask first.</h2></div>
+    <div class="faq-list">
+      <details><summary>What is GoLocal? <span class="pm"></span></summary><div class="ans">A single workspace for running local government boards and commissions. It brings onboarding, meetings, documents, and communication into one place, replacing the scatter of email, paper packets, and personal drives.</div></details>
+      <details><summary>Do our members have to learn another system? <span class="pm"></span></summary><div class="ans">No. Members still receive email and can reply from it. Only the staff liaison composes inside the app. There is no new inbox for members to check and nothing for them to learn.</div></details>
+      <details><summary>What happens to our data, and what if GoLocal goes away? <span class="pm"></span></summary><div class="ans">Your records are yours. Data lives in US-based hosting with row-level isolation, and you can export everything at any time in standard formats. You are never locked in, which matters most for an early company you are choosing to trust.</div></details>
+      <details><summary>Is it secure? <span class="pm"></span></summary><div class="ans">The platform is built on row-level data isolation, every access is logged, and it is reviewed for security before it handles any records. We expect and welcome review by your attorney and procurement team.</div></details>
+      <details><summary>How do we get started? <span class="pm"></span></summary><div class="ans">It begins with a short conversation about how your boards work today. If it is a fit, we handle setup, bringing your board, roster, and existing documents in before anyone on your side touches it.</div></details>
+      <details><summary>What does it cost? <span class="pm"></span></summary><div class="ans">Pricing depends on your jurisdiction and how many boards you run. The honest next step is a conversation, so any number reflects what you actually need rather than a guess.</div></details>
+    </div>
+  </div>
+</section>
+<section class="final" id="contact">
+  <div class="wrap"><h2>See it on <span class="hl-coral">your own boards.</span></h2><p>If you support boards and commissions in your jurisdiction, we would value a short conversation about how they work today and where GoLocal might help.</p><a class="btn-primary" href="mailto:info@golocal.org?subject=GoLocal%20conversation">Get in touch</a></div>
+</section>
+<footer class="grain">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><img class="foot-logo" src="public/logo-light.png" alt="GoLocal" /></div>
+        <p style="margin-top:14px;font-size:.92rem;max-width:300px;">Software for the people who serve on local government boards and commissions.</p>
+      </div>
+      <div class="foot-note">US-based hosting with row-level data isolation. Your records remain yours, with clear ownership and full export. Reviewed for security before handling any data.</div>
+      <div class="foot-contact"><p style="margin-bottom:6px;font-weight:600;color:var(--warm-white);">Contact</p><a href="mailto:info@golocal.org">info@golocal.org</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 GoLocal. All rights reserved.</span><span>Change starts with you.</span></div>
+  </div>
+</footer>
+<script>
+  const obs=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el)=>obs.observe(el));
+</script>
+</body>
+</html>
