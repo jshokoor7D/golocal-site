@@ -100,7 +100,10 @@
   .prow:last-child{margin-bottom:0}
   .prow.flip .ptext{order:2}
   .pnum{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;margin-bottom:18px}
-  .plabel{display:inline-flex;align-items:center;width:fit-content;padding:7px 15px;border-radius:999px;background:#e3edf4;color:var(--navy-deep);font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+  .plabel{display:inline-flex;align-items:center;width:fit-content;padding:7px 15px;border-radius:999px;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;border:1px solid}
+  .plabel.pl-navy{background:#e3edf4;color:var(--navy-deep);border-color:#bcd3e2}
+  .plabel.pl-amber{background:var(--tint-amber);color:#9a6410;border-color:#f3d9a6}
+  .plabel.pl-coral{background:var(--tint-coral);color:#c2492f;border-color:#f6c4b6}
   .ptext h3{font-size:clamp(1.45rem,2.6vw,2rem);color:var(--navy);margin-bottom:14px}
   .ptext .fix{font-size:1.06rem;color:var(--muted)}
   .ptext .fix b{color:var(--ink);font-weight:600}
@@ -248,7 +251,7 @@
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">What we do</span><h2>Centralize your board operations in <span class="hl-coral">one secure system.</span></h2></div>
     <div class="prow reveal">
-      <div class="ptext"><div class="plabel">Onboarding</div><h3>Standardize Training with Custom Onboarding Modules</h3><p class="fix">Build structured orientation paths tailored to your jurisdiction. GoLocal provides ready-to-use templates for city-wide compliance (like open meeting laws and codes of conduct), alongside a module builder to track board-specific knowledge. Staff can monitor completion progress in real time, ensuring every appointee is trained and prepared to serve.</p></div>
+      <div class="ptext"><div class="plabel pl-navy">Onboarding</div><h3>Standardize Training with Custom Onboarding Modules</h3><p class="fix">Build structured orientation paths tailored to your jurisdiction. GoLocal provides ready-to-use templates for city-wide compliance (like open meeting laws and codes of conduct), alongside a module builder to track board-specific knowledge. Staff can monitor completion progress in real time, ensuring every appointee is trained and prepared to serve.</p></div>
       <div class="fvisual fv-onboard">
         <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Welcome and oath of office<small>Completed</small></span></div>
         <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Bylaws and code of conduct<small>Acknowledged</small></span></div>
@@ -258,7 +261,7 @@
       </div>
     </div>
     <div class="prow flip reveal">
-      <div class="ptext"><div class="plabel">Documents</div><h3>Retain Board Data and Prevent Institutional Loss</h3><p class="fix">Protect public records from being lost on personal desktops or private cloud drives. GoLocal provides an organized home for all board materials that survives member turnover. When a volunteer's term ends, their full digital history remains archived inside your system, reducing future FOIA search times.</p></div>
+      <div class="ptext"><div class="plabel pl-amber">Documents</div><h3>Retain Board Data and Prevent Institutional Loss</h3><p class="fix">Protect public records from being lost on personal desktops or private cloud drives. GoLocal provides an organized home for all board materials that survives member turnover. When a volunteer's term ends, their full digital history remains archived inside your system, reducing future FOIA search times.</p></div>
       <div class="fvisual">
         <div class="mock-head" style="margin-bottom:16px"><span class="bname">Regular Session</span><span class="seal" style="background:var(--tint-coral);color:var(--coral)">June 18, 7:00 PM</span></div>
         <div class="card-mini" style="margin-bottom:12px"><div class="label">Meeting packet</div>
@@ -269,7 +272,7 @@
       </div>
     </div>
     <div class="prow reveal">
-      <div class="ptext"><div class="plabel">Compliance</div><h3>Protect Your Jurisdiction with Built-In Open Meeting Guardrails</h3><p class="fix">Eliminate the legal anxieties of accidental reply-all deliberations. GoLocal's structured communication framework ensures your announcements reach every board member, but their replies stay strictly private. You get an organized, auditable record of official communication while keeping your jurisdiction safe from quorum violations.</p></div>
+      <div class="ptext"><div class="plabel pl-coral">Compliance</div><h3>Protect Your Jurisdiction with Built-In Open Meeting Guardrails</h3><p class="fix">Eliminate the legal anxieties of accidental reply-all deliberations. GoLocal's structured communication framework ensures your announcements reach every board member, but their replies stay strictly private. You get an organized, auditable record of official communication while keeping your jurisdiction safe from quorum violations.</p></div>
       <div class="fvisual fv-msg">
         <div class="ann"><div class="who"><span class="tag">Liaison</span> Maria Reyes</div><div class="txt">Reminder, the rezoning memo is now in your June packet. Please review before Tuesday.</div></div>
         <div class="reply"><div class="who">James Carter (private reply)</div><div class="txt">Got it, thank you. One question on the parking section.</div></div>
