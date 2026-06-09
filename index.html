@@ -40,6 +40,15 @@
   .nav-link:hover{color:var(--navy)}
   .nav-cta{background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;font-size:.94rem;transition:background .2s,transform .2s,box-shadow .2s}
   .nav-cta:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;border:1px solid var(--line-cool);border-radius:12px;background:var(--white);cursor:pointer;padding:0}
+  .nav-toggle span{display:block;width:18px;height:2px;background:var(--navy);border-radius:2px;margin:0 auto;transition:transform .2s,opacity .2s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none;flex-direction:column;padding:6px 28px 16px;background:rgba(247,244,239,.97);border-top:1px solid rgba(231,226,217,.7)}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{padding:13px 2px;font-weight:600;font-size:1.02rem;color:var(--navy);border-bottom:1px solid rgba(231,226,217,.6)}
+  .mobile-menu a:last-child{border-bottom:none}
   .hero{position:relative;padding:48px 0 76px;overflow:hidden}
   .hero::before{content:"";position:absolute;top:-240px;right:-160px;width:720px;height:720px;background:radial-gradient(circle at center,rgba(253,166,43,.20),rgba(249,121,94,.10) 42%,transparent 68%);pointer-events:none;z-index:0}
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -104,18 +113,21 @@
   .plabel.pl-navy{background:#e3edf4;color:var(--navy-deep);border-color:#bcd3e2}
   .plabel.pl-amber{background:var(--tint-amber);color:#9a6410;border-color:#f3d9a6}
   .plabel.pl-coral{background:var(--tint-coral);color:#c2492f;border-color:#f6c4b6}
+  .plabel.pl-mint{background:var(--tint-mint);color:#157a52;border-color:#bfe3d3}
+  .plabel.pl-violet{background:#efe9fb;color:#5a44a8;border-color:#dccff2}
+  .plabel.pl-rose{background:#fce9f0;color:#b03a63;border-color:#f3c8d8}
   .ptext h3{font-size:clamp(1.45rem,2.6vw,2rem);color:var(--navy);margin-bottom:14px}
   .ptext .fix{font-size:1.06rem;color:var(--muted)}
   .ptext .fix b{color:var(--ink);font-weight:600}
   .fvisual{border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-md);border:1px solid var(--line-cool);background:var(--white);position:relative}
-  .fv-onboard{position:relative;padding-left:14px}
+  .fv-onboard{position:relative;padding-left:30px}
   .fv-onboard .step{position:relative;display:flex;align-items:flex-start;gap:14px;padding-bottom:18px}
   .fv-onboard .step:last-child{padding-bottom:0}
   /* the chain: vertical connector behind the nodes */
   .fv-onboard .step::before{content:"";position:absolute;left:10px;top:23px;bottom:-1px;width:2px;background:var(--line-cool)}
   .fv-onboard .step:last-child::before{display:none}
   .fv-onboard .step.done::before{background:var(--navy)}
-  .fv-onboard .n{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;margin-top:1px}
+  .fv-onboard .n{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;line-height:1;margin-top:1px}
   .fv-onboard .n svg{width:11px;height:11px;stroke:#fff;stroke-width:3.2;fill:none}
   .fv-onboard .n.done{background:var(--navy);color:#fff}
   .fv-onboard .n.now{background:var(--amber);color:var(--navy-deep);box-shadow:0 0 0 3px rgba(253,166,43,.18)}
@@ -219,6 +231,10 @@
     section{padding:64px 0}
     .founder-card{padding:34px 26px}
     .nav-link{display:none}
+    .nav-toggle{display:flex}
+    .nav-right{gap:14px}
+    .fv-onboard{display:flex;flex-direction:column}
+    .onb-quiz{position:static !important;order:99;align-self:flex-end;margin-top:18px !important;top:auto !important;right:auto !important;bottom:auto !important;left:auto !important;transform:rotate(-2deg) !important}
   }
 </style>
 </head>
@@ -226,7 +242,12 @@
 <nav>
   <div class="wrap nav-inner">
     <a class="brand" href="#top"><img class="brand-logo" src="logo-dark.png" alt="GoLocal" /></a>
-    <div class="nav-right"><a class="nav-link" href="#how">How it works</a><a class="nav-link" href="#who">Who it serves</a><a class="nav-link" href="#faq">FAQ</a><a class="nav-cta" href="#contact">Get in touch</a></div>
+    <div class="nav-right"><a class="nav-link" href="#how">How it works</a><a class="nav-link" href="#who">Who it serves</a><a class="nav-link" href="#faq">FAQ</a><a class="nav-cta" href="#contact">Get in touch</a><button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how">How it works</a>
+    <a href="#who">Who it serves</a>
+    <a href="#faq">FAQ</a>
   </div>
 </nav>
 <header class="hero">
@@ -260,30 +281,101 @@
     <div class="prow reveal">
       <div class="ptext"><div class="plabel pl-navy">Onboarding</div><h3>Standardize Training with Custom Onboarding Modules</h3><p class="fix">Build structured orientation paths tailored to your jurisdiction. GoLocal provides ready-to-use templates for city-wide compliance (like open meeting laws and codes of conduct), alongside a module builder to track board-specific knowledge. Staff can monitor completion progress in real time, ensuring every appointee is trained and prepared to serve.</p></div>
       <div class="fvisual fv-onboard">
+        <div class="onb-quiz" style="position:absolute;right:16px;top:50%;transform:translateY(-50%) rotate(-3deg);width:174px;background:#fff;border:1px solid var(--line-cool);border-radius:16px;box-shadow:var(--shadow-md);padding:14px 15px">
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.04em;color:var(--amber-warm);margin-bottom:7px">ROLES QUIZ</div>
+          <div style="font-size:.84rem;font-weight:600;color:var(--ink);margin-bottom:10px">What is a quorum?</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:1.4px solid #1f9d6b;background:var(--tint-mint);border-radius:8px;padding:7px 11px;margin-bottom:7px"><span style="font-size:.8rem;font-weight:600;color:var(--ink)">A majority</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1f9d6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div style="border:1px solid var(--line-cool);background:#f4f6f8;border-radius:8px;padding:7px 11px"><span style="font-size:.8rem;color:var(--muted)">Everyone</span></div>
+        </div>
         <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Welcome and oath of office<small>Completed</small></span></div>
         <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Bylaws and code of conduct<small>Acknowledged</small></span></div>
-        <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Open meetings law<small>Watched</small></span></div>
+        <div class="step done"><span class="n done"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t">Robert's Rules of Order<small>Watched</small></span></div>
         <div class="step now"><span class="n now">4</span><span class="t">Roles and procedures quiz<small>In progress</small></span></div>
         <div class="step next"><span class="n next">5</span><span class="t">Meet your board<small>Up next</small></span></div>
       </div>
     </div>
     <div class="prow flip reveal">
-      <div class="ptext"><div class="plabel pl-amber">Documents</div><h3>Retain Board Data and Prevent Institutional Loss</h3><p class="fix">Protect public records from being lost on personal desktops or private cloud drives. GoLocal provides an organized home for all board materials that survives member turnover. When a volunteer's term ends, their full digital history remains archived inside your system, reducing future FOIA search times.</p></div>
-      <div class="fvisual">
+      <div class="ptext"><div class="plabel pl-violet">Meetings</div><h3>Run Every Meeting from One Place</h3><p class="fix">Your board's meetings live in their own space, separate from your work and personal calendars. Members get the agenda and packet in their dashboard, see what to review beforehand, and confirm whether they will attend. Staff track quorum ahead of time and keep a clean attendance record afterward.</p></div>
+      <div class="fvisual" style="padding-bottom:72px">
         <div class="mock-head" style="margin-bottom:16px"><span class="bname">Regular Session</span><span class="seal" style="background:var(--tint-coral);color:var(--coral)">June 18, 7:00 PM</span></div>
         <div class="card-mini" style="margin-bottom:12px"><div class="label">Meeting packet</div>
-          <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Agenda - June 18.pdf</div>
-          <div class="doc-row"><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> Staff memo - rezoning.pdf</div>
+          <div class="doc-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#034872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> Agenda - June 18.pdf</div>
+          <div class="doc-row"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#034872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> Staff memo - rezoning.pdf</div>
         </div>
         <div class="card-mini"><div class="label">Attendance</div><div class="progress-row"><span class="v">Confirmed for this meeting</span><span class="c" style="color:#1f9d6b">7 of 9</span></div><div class="bar"><i style="width:78%;background:linear-gradient(90deg,#1f9d6b,#34c98a)"></i></div></div>
+        <div style="position:absolute;left:16px;bottom:-16px;width:236px;background:#fff;border:1px solid var(--line-cool);border-radius:14px;box-shadow:var(--shadow-md);transform:rotate(-2.5deg);padding:12px 16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span style="font-size:.66rem;font-weight:700;letter-spacing:.05em;color:var(--amber-warm)">YOUR TASK</span><span style="font-size:.62rem;font-weight:700;color:#9a6410;background:var(--tint-amber);padding:2px 9px;border-radius:999px">Due Jun 17</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:15px;height:15px;border-radius:4px;border:2px solid var(--amber);flex:none"></span><span style="font-size:.84rem;font-weight:600;color:var(--ink)">Review the May 21 minutes</span></div>
+        </div>
       </div>
     </div>
     <div class="prow reveal">
+      <div class="ptext"><div class="plabel pl-amber">Documents</div><h3>One Secure Home for Every Board Document</h3><p class="fix">Share every board document in one secure place where the whole board can find it. Bylaws, past minutes, reports, and reference material stay organized and accessible, not scattered across inboxes and personal drives. And because it lives with the board, the knowledge survives both member and staff turnover.</p></div>
+      <div class="fvisual">
+        <span class="bname" style="font-size:1.02rem;font-weight:700;color:var(--navy)">Board library</span>
+        <div style="position:absolute;right:18px;top:18px;transform:rotate(-2deg);background:#fff;border:1px solid var(--line-cool);border-radius:12px;box-shadow:var(--shadow-md);padding:7px 13px;display:flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#157a52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span style="font-size:.74rem;font-weight:700;color:#157a52">Secure</span></div>
+        <div style="display:flex;gap:8px;margin:16px 0 14px">
+          <span style="display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;font-weight:600;font-size:.82rem;padding:8px 15px;border-radius:9px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M6 14l1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg><span>Meetings</span></span>
+          <span style="background:var(--tint-navy);color:var(--navy);font-weight:600;font-size:.82rem;padding:8px 14px;border-radius:9px">Policies</span>
+          <span style="background:var(--tint-navy);color:var(--navy);font-weight:600;font-size:.82rem;padding:8px 14px;border-radius:9px">Reports</span>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line-cool);border-radius:12px;padding:6px 14px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid var(--line-cool)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#034872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span style="flex:1;font-size:.86rem;color:var(--ink)">Agenda - June 18</span><span style="font-size:.72rem;font-weight:700;color:var(--muted)">PDF</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px solid var(--line-cool)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#034872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span style="flex:1;font-size:.86rem;color:var(--ink)">Staff memo - rezoning</span><span style="font-size:.72rem;font-weight:700;color:var(--muted)">PDF</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:9px 0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#034872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span style="flex:1;font-size:.86rem;color:var(--ink)">May 21 minutes</span><span style="font-size:.72rem;font-weight:700;color:var(--muted)">PDF</span></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="avatars"><span style="background:#034872">TM</span><span style="background:#F9795E">RB</span><span style="background:#FDA62B">JL</span><span style="background:#1f9d6b">AO</span><span style="background:#7a6cc4">+5</span></div>
+          <span style="font-size:.78rem;font-weight:600;color:var(--navy)">Shared with all 9 members</span>
+        </div>
+      </div>
+    </div>
+    <div class="prow flip reveal">
       <div class="ptext"><div class="plabel pl-coral">Compliance</div><h3>Protect Your Jurisdiction with Built-In Open Meeting Guardrails</h3><p class="fix">Eliminate the legal anxieties of accidental reply-all deliberations. GoLocal's structured communication framework ensures your announcements reach every board member, but their replies stay strictly private. You get an organized, auditable record of official communication while keeping your jurisdiction safe from quorum violations.</p></div>
       <div class="fvisual fv-msg">
         <div class="ann"><div class="who"><span class="tag">Liaison</span> Maria Reyes</div><div class="txt">Reminder, the rezoning memo is now in your June packet. Please review before Tuesday.</div></div>
         <div class="reply"><div class="who">James Carter (private reply)</div><div class="txt">Got it, thank you. One question on the parking section.</div></div>
         <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> No accidental quorum. No reply-all deliberation.</div>
+      </div>
+    </div>
+    <div class="prow reveal">
+      <div class="ptext"><div class="plabel pl-mint">Surveys</div><h3>Capture Member Input with Structured Surveys</h3><p class="fix">Read the room between meetings without a tangle of reply-all email, from a quick engagement pulse to an exit survey when a member's term ends. Send to the whole board or to specific members and collect every response in one place. Responses can be anonymous when candor matters.</p></div>
+      <div class="fvisual">
+        <div class="mock-head" style="margin-bottom:16px"><span class="bname">Engagement pulse</span><span class="seal" style="background:var(--tint-navy);color:var(--navy)">Anonymous</span></div>
+        <div class="card-mini">
+          <div class="label">Survey question</div>
+          <div style="font-size:.9rem;font-weight:600;color:var(--navy);margin-bottom:6px">How valued does your input feel this quarter?</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-cool)"><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--amber);background:var(--amber);flex:none"></span><span style="font-size:.86rem;color:var(--ink);flex:1">Very valued</span><span style="font-size:.72rem;font-weight:700;color:#9a6410;background:var(--tint-amber);padding:2px 10px;border-radius:999px">4</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-cool)"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #cdd7df;flex:none"></span><span style="font-size:.86rem;color:var(--ink);flex:1">Somewhat valued</span><span style="font-size:.72rem;font-weight:700;color:var(--navy);background:var(--tint-navy);padding:2px 10px;border-radius:999px">1</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line-cool)"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #cdd7df;flex:none"></span><span style="font-size:.86rem;color:var(--ink);flex:1">Not really</span><span style="font-size:.72rem;font-weight:700;color:var(--navy);background:var(--tint-navy);padding:2px 10px;border-radius:999px">1</span></div>
+        </div>
+        <div class="doc-row" style="color:var(--muted);margin-top:6px"><span class="chip" style="background:var(--tint-mint)"><svg viewBox="0 0 24 24" fill="none" style="stroke:#1f9d6b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> 6 of 9 members responded</div>
+      </div>
+    </div>
+    <div class="prow flip reveal">
+      <div class="ptext"><div class="plabel pl-rose">Oversight</div><h3>Gain Real Visibility Across Every Board</h3><p class="fix">GoLocal turns board activity into analytics leadership can actually use. See attendance, tenure, quorum, and task completion across every board, compare boards side by side, or focus on a single member. Then export what you need as a CSV, a detailed PDF, or a chart.</p></div>
+      <div class="fvisual">
+        <div class="mock-head" style="margin-bottom:14px"><span class="bname">Analytics</span><span class="seal">All boards</span></div>
+        <div style="display:flex;gap:22px;margin-bottom:14px">
+          <div><div style="font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Avg attendance</div><div style="font-size:1.25rem;font-weight:700;color:#1f9d6b">87%</div></div>
+          <div><div style="font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Quorum</div><div style="font-size:1.25rem;font-weight:700;color:var(--navy)">96%</div></div>
+          <div><div style="font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Open seats</div><div style="font-size:1.25rem;font-weight:700;color:var(--coral)">3</div></div>
+        </div>
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Attendance over time, all boards</div>
+        <svg viewBox="0 0 320 96" width="100%" style="display:block" fill="none" font-family="DM Sans, sans-serif">
+          <line x1="14" y1="72" x2="306" y2="72" stroke="#e3eaf0" stroke-width="1"/>
+          <polygon points="22,72 22,58.4 77,50.2 132,52.9 187,42 242,44.7 297,36.5 297,72" fill="#034872" fill-opacity="0.07"/>
+          <polyline points="22,58.4 77,50.2 132,52.9 187,42 242,44.7 297,36.5" stroke="#034872" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="22" cy="58.4" r="3.5" fill="#034872" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="77" cy="50.2" r="3.5" fill="#034872" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="132" cy="52.9" r="3.5" fill="#034872" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="187" cy="42" r="3.5" fill="#034872" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="242" cy="44.7" r="3.5" fill="#034872" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="297" cy="36.5" r="4.5" fill="#FDA62B" stroke="#fff" stroke-width="1.5"/>
+          <g font-size="9" font-weight="700" fill="#16242e" text-anchor="middle"><text x="22" y="51">83%</text><text x="77" y="43">86%</text><text x="132" y="46">85%</text><text x="187" y="35">89%</text><text x="242" y="38">88%</text><text x="297" y="29">91%</text></g>
+          <g font-size="9" fill="#5d6c78" text-anchor="middle"><text x="22" y="88">Jan</text><text x="77" y="88">Feb</text><text x="132" y="88">Mar</text><text x="187" y="88">Apr</text><text x="242" y="88">May</text><text x="297" y="88">Jun</text></g>
+        </svg>
+        <div style="display:flex;align-items:center;justify-content:flex-end;gap:7px;margin-top:10px"><span style="font-size:.74rem;font-weight:700;color:var(--ink);margin-right:2px">Export</span><span style="font-size:.7rem;font-weight:700;color:var(--navy);background:var(--tint-navy);padding:3px 11px;border-radius:999px">CSV</span><span style="font-size:.7rem;font-weight:700;color:var(--navy);background:var(--tint-navy);padding:3px 11px;border-radius:999px">PDF</span><span style="font-size:.7rem;font-weight:700;color:var(--navy);background:var(--tint-navy);padding:3px 11px;border-radius:999px">PNG</span></div>
       </div>
     </div>
   </div>
@@ -305,7 +397,7 @@
       <div class="aud reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg></div>
         <span class="tag">Government leadership</span>
-        <ul><li>Boards that look and run professionally</li><li>Reduce FOIA and open meetings risk</li><li>Standardize without forcing rigid uniformity</li><li>Knowledge that stays after members leave</li></ul>
+        <ul><li>Modernize processes for a new generation of members</li><li>Increase accessibility and compliance</li><li>Standardize without forcing rigid uniformity</li><li>Knowledge that stays after staff and members leave</li></ul>
       </div>
     </div>
   </div>
@@ -353,6 +445,18 @@
 <script>
   const obs=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el)=>obs.observe(el));
+  const navToggle=document.querySelector('.nav-toggle');
+  const mobileMenu=document.getElementById('mobileMenu');
+  if(navToggle&&mobileMenu){
+    navToggle.addEventListener('click',()=>{
+      const open=mobileMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded',open?'true':'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+    }));
+  }
 </script>
 </body>
 </html>
