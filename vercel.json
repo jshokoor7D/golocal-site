@@ -1,0 +1,28 @@
+{
+  "redirects": [
+    { "source": "/about-us", "destination": "/", "permanent": true },
+    { "source": "/about-us/:path*", "destination": "/", "permanent": true },
+    { "source": "/government", "destination": "/", "permanent": true },
+    { "source": "/government/:path*", "destination": "/", "permanent": true },
+    { "source": "/governments", "destination": "/", "permanent": true },
+    { "source": "/governments/:path*", "destination": "/", "permanent": true },
+    { "source": "/appointees", "destination": "/", "permanent": true },
+    { "source": "/appointees/:path*", "destination": "/", "permanent": true },
+    { "source": "/citizens", "destination": "/", "permanent": true },
+    { "source": "/citizens/:path*", "destination": "/", "permanent": true },
+    { "source": "/trainings", "destination": "/", "permanent": true },
+    { "source": "/trainings/:path*", "destination": "/", "permanent": true },
+    { "source": "/resources", "destination": "/", "permanent": true },
+    { "source": "/resources/:path*", "destination": "/", "permanent": true },
+    { "source": "/community-page", "destination": "/", "permanent": true },
+    { "source": "/community-page/:path*", "destination": "/", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+    { "source": "/blogs", "destination": "/", "permanent": true },
+    { "source": "/blogs/:path*", "destination": "/", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/contacts", "destination": "/#contact", "permanent": true },
+    { "source": "/contact/:path*", "destination": "/#contact", "permanent": true },
+    { "source": "/contacts/:path*", "destination": "/#contact", "permanent": true }
+  ]
+}
