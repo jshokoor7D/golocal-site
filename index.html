@@ -96,9 +96,6 @@
   .float-badge .tick svg{width:17px;height:17px;stroke:#1f9d6b}
   .float-badge .ft{font-size:.78rem;font-weight:700;color:var(--navy)}
   .float-badge .fs{font-size:.7rem;color:var(--muted)}
-  .credband{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}
-  .credband .wrap{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;flex-wrap:wrap;font-size:1rem;color:var(--muted)}
-  .credband strong{color:var(--navy);font-weight:600}
   section{padding:92px 0}
   .eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
   .sec-head{max-width:680px;margin:0 auto 56px;text-align:center}
@@ -109,7 +106,6 @@
   .prow{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:78px}
   .prow:last-child{margin-bottom:0}
   .prow.flip .ptext{order:2}
-  .pnum{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.2rem;margin-bottom:18px}
   .plabel{display:inline-flex;align-items:center;width:fit-content;padding:7px 15px;border-radius:999px;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;border:1px solid}
   .plabel.pl-navy{background:#e3edf4;color:var(--navy-deep);border-color:#bcd3e2}
   .plabel.pl-amber{background:var(--tint-amber);color:#9a6410;border-color:#f3d9a6}
@@ -144,24 +140,6 @@
   .fv-msg .reply .txt{font-size:.84rem;color:var(--ink)}
   .fv-msg .lock{margin-top:13px;display:flex;align-items:center;gap:8px;font-size:.78rem;color:#1f9d6b;font-weight:600}
   .fv-msg .lock svg{width:15px;height:15px;stroke:#1f9d6b}
-  /* how it works */
-  .how{background:var(--navy);color:var(--warm-white)}
-  .how .sec-head .eyebrow{color:var(--amber)}
-  .how .sec-head h2{color:var(--warm-white)}
-  .how .sec-head p{color:rgba(247,244,239,.82)}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .stepcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px}
-  .stepcard .sn{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:600;color:var(--amber-warm);margin-bottom:14px}
-  .stepcard h3{font-size:1.2rem;color:var(--warm-white);margin-bottom:10px}
-  .stepcard p{font-size:.97rem;color:rgba(247,244,239,.78)}
-  /* beyond (secondary) */
-  .beyond{background:var(--white)}
-  .by-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .by{background:var(--warm-white);border:1px solid var(--line);border-radius:var(--radius);padding:32px 30px;display:flex;gap:18px;align-items:flex-start}
-  .by .ic{width:46px;height:46px;flex:none;border-radius:13px;display:flex;align-items:center;justify-content:center}
-  .by .ic svg{width:23px;height:23px}
-  .by h3{font-size:1.18rem;color:var(--navy);margin-bottom:8px}
-  .by p{font-size:.98rem;color:var(--muted)}
   /* audiences */
   .auds{background:var(--navy);color:var(--warm-white)}
   .auds .sec-head .eyebrow{color:var(--amber)}
@@ -220,15 +198,11 @@
   /* founder corner accent (CIVIC-guide tab motif) */
   .founder-card .corner{position:absolute;top:0;left:54px;width:62px;height:6px;background:var(--coral);border-radius:0 0 7px 7px;z-index:1}
   @media (max-width:940px){
-    .pill{background:none;border:none;box-shadow:none;padding:0;margin-bottom:12px;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
-    .pill .dot{display:none}
     .hero-grid{grid-template-columns:1fr;gap:46px}
     .hero::before{top:40px;right:-120px;width:680px;height:680px;background:radial-gradient(circle at center,rgba(253,166,43,.16),rgba(249,121,94,.08) 42%,transparent 70%)}
     .mock-stage{max-width:460px}
     .prow,.prow.flip .ptext{grid-template-columns:1fr;order:0}
     .prow{gap:26px}
-    .steps{grid-template-columns:1fr}
-    .by-grid{grid-template-columns:1fr}
     .aud-grid{grid-template-columns:1fr}
     section{padding:64px 0}
     .founder-card{padding:34px 26px}
@@ -240,7 +214,6 @@
     .foot-logo{height:26px}
     .onb-quiz{position:absolute !important;z-index:6;top:auto !important;left:auto !important;right:4px !important;bottom:-72px !important;width:158px !important;transform:scale(.85) !important;transform-origin:bottom right !important;margin:0 !important}
     .onb-quiz .q-extra{display:none}
-    .onb-quiz .ans-extra{display:none}
     .onb-quiz > div:nth-last-child(3){margin-bottom:0 !important}
   }
   .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(2,47,73,.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:20px}
