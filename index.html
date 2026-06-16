@@ -247,8 +247,8 @@
   .modal-sub{font-size:.95rem;color:var(--muted);margin-bottom:22px;line-height:1.5}
   #demoForm{display:flex;flex-direction:column;gap:14px}
   #demoForm label{display:flex;flex-direction:column;gap:6px;font-size:.82rem;font-weight:700;color:var(--ink)}
-  #demoForm input,#demoForm textarea{font:inherit;font-size:.95rem;font-weight:400;color:var(--ink);padding:11px 13px;border:1px solid var(--line-cool);border-radius:11px;background:var(--warm-white);transition:border-color .15s,box-shadow .15s}
-  #demoForm input:focus,#demoForm textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(3,72,114,.12)}
+  #demoForm input,#demoForm textarea,#demoForm select{font:inherit;font-size:.95rem;font-weight:400;color:var(--ink);padding:11px 13px;border:1px solid var(--line-cool);border-radius:11px;background:var(--warm-white);transition:border-color .15s,box-shadow .15s}
+  #demoForm input:focus,#demoForm textarea:focus,#demoForm select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(3,72,114,.12)}
   #demoForm textarea{resize:vertical}
   .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0}
   .modal-submit{margin-top:6px;background:var(--navy);color:#fff;border:none;padding:13px 22px;border-radius:999px;font-weight:700;font-size:1rem;cursor:pointer;transition:background .2s,transform .2s}
@@ -521,13 +521,13 @@
     <button class="modal-close" id="demoClose" aria-label="Close">&times;</button>
     <div id="demoFormWrap">
       <h3 id="demoTitle">Request a demo</h3>
-      <p class="modal-sub">Tell us a little about your boards and we will be in touch to set up a short walkthrough.</p>
+      <p class="modal-sub">Tell us about your boards and we will set up a walkthrough for your team.</p>
       <form id="demoForm" novalidate>
         <label>Name<input type="text" name="name" required autocomplete="name" /></label>
         <label>Work email<input type="email" name="email" required autocomplete="email" /></label>
         <label>Organization<input type="text" name="organization" autocomplete="organization" /></label>
-        <label>Role<input type="text" name="role" placeholder="Clerk, commissioner, staff, leadership..." /></label>
-        <label>What would you like to see?<textarea name="message" rows="3" required></textarea></label>
+        <label>Role<select name="role"><option value="">Select your role...</option><option>Clerk / Recorder</option><option>Staff Liaison / Assistant</option><option>Board Member / Commissioner</option><option>IT / Security Leadership</option><option>City / County Administration</option><option>Other</option></select></label>
+        <label>What is your top priority for your boards?<textarea name="message" rows="3" required placeholder="e.g., onboarding, open meeting compliance, document management..."></textarea></label>
         <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <button type="submit" class="modal-submit" id="demoSubmit">Send request</button>
         <p class="modal-status" id="demoStatus" role="status"></p>
