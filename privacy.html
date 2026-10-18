@@ -66,13 +66,13 @@
   </div>
 
   <h2>1. Plain-Language Summary</h2>
-  <p>We provide a closed, multi-tenant workspace for local government boards and commissions. The information you give us, or that your jurisdiction provides on your behalf, is used to operate that workspace and nothing else.</p>
+  <p>We provide a closed workspace for local government boards and commissions, with a dedicated environment for each jurisdiction. The information you give us, or that your jurisdiction provides on your behalf, is used to operate that workspace and nothing else.</p>
   <ul>
     <li>We do not sell your personal information.</li>
     <li>We do not show advertising on the Platform.</li>
     <li>We do not share your information with marketing partners, advertising networks, or data brokers.</li>
     <li>We do not build behavioral profiles for advertising purposes.</li>
-    <li>The Platform is hosted in the United States on AWS infrastructure through our subprocessors.</li>
+    <li>The Platform is hosted in the United States, in Northern Virginia, on Google Cloud infrastructure through our subprocessors.</li>
     <li>Some of the information you place on the Platform may be subject to your jurisdiction&rsquo;s public records, open meetings, or ethics laws. The Platform supports compliance, but legal obligations belong to your jurisdiction.</li>
   </ul>
 
@@ -90,13 +90,13 @@
   <h3>3.1 Account and Profile Information</h3>
   <p>When your account is created, we collect:</p>
   <ul>
-    <li>Your name and email address.</li>
+    <li>Your name, email address, and, where provided, phone number.</li>
     <li>Your role on the Platform (such as appointee, staff liaison, or platform admin).</li>
     <li>The board or commission you are associated with, your seat or title, and the start and end dates of your term.</li>
     <li>Optional profile information you choose to provide (such as a photo, biography, or contact preferences).</li>
   </ul>
   <p>Most accounts are created by invitation from a staff liaison or platform administrator. We do not run an open consumer signup process.</p>
-  <p><strong>Residency information.</strong> Where a jurisdiction requires it to verify that a member is eligible for a particular seat or appointment (for example, a district seat that requires residence within that district), the Platform also stores the member&rsquo;s residential address. This information is collected only for jurisdictions that require residency verification. It is access-restricted to authorized personnel, specifically, jurisdiction administrators and the member&rsquo;s assigned staff liaison, and is never visible to other board members or to the public. A member can view their own residency information but cannot edit it; the clerk&rsquo;s office maintains it as a verified record.</p>
+  <p>Where your jurisdiction requires residency verification for a seat, we also collect the residency information your jurisdiction requires. This information is visible only to your jurisdiction&rsquo;s administrators and your board&rsquo;s staff liaison. You can view it but not edit it, and it is not visible to other board members.</p>
   <h3>3.2 Authentication Information</h3>
   <p>We support two authentication methods: email and password, or Google OAuth. We do not support Facebook login or other social authentication. If you authenticate with Google, we receive only the basic profile information needed to create and link your account (name, email address, and Google account identifier).</p>
   <h3>3.3 Content You Create or Upload</h3>
@@ -107,6 +107,7 @@
     <li>Tasks, task notes, and task attachments.</li>
     <li>Meeting attendance and RSVP records.</li>
     <li>Onboarding responses, including quiz answers, acknowledgments, and form submissions.</li>
+    <li>Survey responses.</li>
     <li>Notification preferences.</li>
   </ul>
   <p>Content scoped to a board is visible only to authorized members and liaisons of that board, in accordance with the access rules described in our Terms of Use.</p>
@@ -149,19 +150,15 @@
   <h3>5.2 Subprocessors</h3>
   <p>We use a small set of third-party service providers (&ldquo;Subprocessors&rdquo;) to operate the Platform. All Subprocessors are contractually bound to handle information consistent with this Policy and applicable law. Our current Subprocessors are:</p>
   <ul>
-    <li>Supabase, Inc. &mdash; database, authentication, and file storage. United States, on AWS infrastructure.</li>
-    <li>Vercel, Inc. &mdash; application hosting. United States, on AWS infrastructure.</li>
-    <li>Resend, Inc. &mdash; transactional email delivery. United States.</li>
-    <li>Mux, Inc. &mdash; video hosting for onboarding material. United States.</li>
-    <li>Anthropic &mdash; optional AI-generated summaries. United States.</li>
-    <li>Sentry &mdash; server-side error reporting. United States.</li>
-    <li>Google &mdash; calendar integration, optional and user-initiated. United States.</li>
+    <li><strong>Railway Corporation</strong> &mdash; application hosting, database, and file storage. United States (Northern Virginia), on Google Cloud infrastructure.</li>
+    <li><strong>Google LLC</strong> &mdash; optional calendar synchronization, only when you choose to connect your own calendar. United States.</li>
+    <li><strong>Resend, Inc.</strong> &mdash; transactional email delivery. United States.</li>
   </ul>
   <p>From time to time we also engage development and security contractors who may access personal information under written confidentiality and data-handling obligations. Contractors with ongoing access to personal information are treated as Subprocessors and disclosed to subscribing jurisdictions. We will provide reasonable advance notice to subscribing jurisdictions before adding or replacing a Subprocessor that processes their data.</p>
   <h3>5.3 Legal Process and Safety</h3>
   <p>We may disclose information if we believe in good faith that disclosure is necessary to comply with applicable law, valid legal process, or a lawful government request; to enforce our Terms of Use; to detect, prevent, or address fraud, security, or technical issues; or to protect the rights, property, or safety of GoLocal, our users, or the public.</p>
   <h3>5.4 Public Records and Open Meetings Laws</h3>
-  <p>Users of the Platform are typically acting in their official capacity as appointed members or employees of a local government. Some content placed on the Platform may, depending on the jurisdiction, constitute a public record subject to disclosure under FOIA, state public records statutes, or open meetings laws. The Platform supports your jurisdiction&rsquo;s compliance, but the legal obligation to respond to records requests and to comply with open meetings laws rests with your jurisdiction. GoLocal will reasonably cooperate with your jurisdiction&rsquo;s lawful requests for records held in its workspace.</p>
+  <p>Users of the Platform are typically acting in their official capacity as appointed members or employees of a local government. Some content placed on the Platform may, depending on the jurisdiction, constitute a public record subject to disclosure under FOIA, state public records statutes, or open meetings laws. Messages cannot be deleted by users once sent, and your jurisdiction may retrieve messages and contact details from its workspace to respond to a records request. The Platform supports your jurisdiction&rsquo;s compliance, but the legal obligation to respond to records requests and to comply with open meetings laws rests with your jurisdiction. GoLocal will reasonably cooperate with your jurisdiction&rsquo;s lawful requests for records held in its workspace.</p>
   <h3>5.5 Business Transfers</h3>
   <p>If GoLocal is involved in a merger, acquisition, financing, reorganization, bankruptcy, or sale of assets, information may be transferred as part of that transaction, subject to confidentiality protections at least as protective as those in this Policy.</p>
   <h3>5.6 What We Do Not Share</h3>
@@ -210,7 +207,7 @@
   <p>The Platform is intended for use by adults serving in official capacities for local governments. It is not directed to children under 18, and we do not knowingly collect personal information from children. If we learn that we have collected information from a child, we will delete it.</p>
 
   <h2>10. International Data Transfers</h2>
-  <p>Personal information processed through the Platform is stored in the United States. GoLocal personnel and approved service providers located in the Netherlands, where GoLocal maintains an office, may access personal information remotely in order to operate, develop, and support the Platform. That access is subject to the safeguards described in Section 7. If you access the Platform from outside the United States, you understand that information will be transferred to and processed in the United States. Where required, we rely on appropriate transfer mechanisms (such as Standard Contractual Clauses) for cross-border transfers.</p>
+  <p>Personal information processed through the Platform is stored in the United States. GoLocal personnel located in the Netherlands, where GoLocal maintains an office, may access personal information remotely in order to operate, develop, and support the Platform. That access is subject to the safeguards described in Section 7. If you access the Platform from outside the United States, you understand that information will be transferred to and processed in the United States. Where required, we rely on appropriate transfer mechanisms (such as Standard Contractual Clauses) for cross-border transfers.</p>
 
   <h2>11. Do Not Track</h2>
   <p>Because we do not engage in cross-site tracking for advertising purposes, our practices do not change in response to Do Not Track signals from your browser.</p>
