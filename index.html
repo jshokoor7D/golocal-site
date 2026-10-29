@@ -480,12 +480,15 @@
     const titleEl=document.getElementById('demoTitle');
     let lastFocus=null;
     function openModal(e,label){ if(e) e.preventDefault(); lastFocus=document.activeElement; modal.hidden=false; document.body.classList.add('modal-open'); wrap.hidden=false; successEl.hidden=true; statusEl.textContent=''; if(label) titleEl.textContent=label; const f=form.querySelector('input[name=name]'); if(f) f.focus(); }
-    function closeModal(){ modal.hidden=true; document.body.classList.remove('modal-open'); form.reset(); if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+    function closeModal(){ modal.hidden=true; document.body.classList.remove('modal-open'); form.reset(); if(lastFocus&&lastFocus.focus) lastFocus.focus(); if(location.hash==='#demo') history.replaceState(null,'',location.pathname+location.search); }
     document.querySelectorAll('[data-demo]').forEach(el=>el.addEventListener('click',(e)=>openModal(e, el.getAttribute('data-demo')||'')));
     document.getElementById('demoClose').addEventListener('click',closeModal);
     document.getElementById('demoDone').addEventListener('click',closeModal);
     modal.addEventListener('click',(e)=>{ if(e.target===modal) closeModal(); });
     document.addEventListener('keydown',(e)=>{ if(e.key==='Escape' && !modal.hidden) closeModal(); });
+    function openFromHash(){ if(location.hash==='#demo' && modal.hidden) openModal(null,'Request a demo'); }
+    openFromHash();
+    window.addEventListener('hashchange',openFromHash);
     form.addEventListener('submit',async (e)=>{
       e.preventDefault();
       statusEl.textContent='';
